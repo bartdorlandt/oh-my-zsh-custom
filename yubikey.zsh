@@ -1,7 +1,7 @@
 # make it less tempting to use gpg version 1
 alias gpg=gpg2
 # use gpg's tab completions for gpg2; careful: not all options exist in both
-compdef gpg2=gpg
+#compdef gpg2=gpg
 
 # Yubikey , GPG, SSH
 if [ -x /usr/bin/gpg-agent ] && [ -x /usr/lib/gnupg2/scdaemon ]; then
