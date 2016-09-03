@@ -1,4 +1,7 @@
-ZSH_THEME="tjkirch"
+# This is a new one, except for the time.
+#ZSH_THEME="tjkirch"
+# Creates a shorter path, but still nice.
+ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 plugins=(git debian)
 # Do not prompt me about auto updates, just do it.
