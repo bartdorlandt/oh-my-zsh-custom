@@ -1,4 +1,4 @@
-ZSH_THEME="tjkirch"
+ZSH_THEME="maran"
 CASE_SENSITIVE="true"
 # Do not prompt me about auto updates, just do it.
 DISABLE_UPDATE_PROMPT="true"
