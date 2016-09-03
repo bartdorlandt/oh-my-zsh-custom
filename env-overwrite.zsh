@@ -1,7 +1,9 @@
 # This is a new one, except for the time.
 #ZSH_THEME="tjkirch"
 # Creates a shorter path, but still nice.
-ZSH_THEME="risto"
+#ZSH_THEME="risto"
+# Bart is a mix of risto and tjkirch
+ZSH_THEME="bart"
 CASE_SENSITIVE="true"
 plugins=(git debian)
 # Do not prompt me about auto updates, just do it.
