@@ -1,4 +1,7 @@
-ZSH_THEME="maran"
+# This is a new one, except for the time.
+#ZSH_THEME="tjkirch"
+# Creates a shorter path, but still nice.
+ZSH_THEME="risto"
 CASE_SENSITIVE="true"
 # Do not prompt me about auto updates, just do it.
 DISABLE_UPDATE_PROMPT="true"
