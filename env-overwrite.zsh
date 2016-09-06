@@ -5,7 +5,7 @@
 # Bart is a mix of risto and tjkirch
 ZSH_THEME="bart"
 CASE_SENSITIVE="true"
-plugins=(git debian)
+plugins=(git debian extract)
 # Do not prompt me about auto updates, just do it.
 DISABLE_UPDATE_PROMPT="true"
 DISABLE_AUTO_UPDATE="true"
@@ -13,4 +13,5 @@ DISABLE_AUTO_UPDATE="true"
 # Load the bash aliases I already had.
 source $HOME/.bash_aliases
 
-
+# loading fasd separately to get it working
+source $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh
