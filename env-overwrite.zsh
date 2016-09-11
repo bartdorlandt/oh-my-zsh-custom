@@ -11,7 +11,11 @@ DISABLE_UPDATE_PROMPT="true"
 DISABLE_AUTO_UPDATE="true"
 
 # Load the bash aliases I already had.
-source $HOME/.bash_aliases
+if [[ -f $HOME/.bash_aliases ]] ; then
+  source $HOME/.bash_aliases
+fi
 
 # loading fasd separately to get it working
-source $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh
+if [[ -f $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh ]] ; then
+  source $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh
+fi
