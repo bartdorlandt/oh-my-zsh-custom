@@ -19,6 +19,6 @@ function user_color {
 #RPROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%})'
 
 # removed the reset color parts. Removed the return code since I don't use them anyway. 
-PROMPT='%_$(user_color)@%{$fg[yellow]%}%m %{$fg_bold[blue]%}%2~$(git_prompt_info) %_$(prompt_char) '
+PROMPT='%_$(user_color)@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%}$(git_prompt_info) %_$(prompt_char) '
 #RPROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%})'
 
