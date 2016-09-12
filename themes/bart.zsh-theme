@@ -10,6 +10,9 @@ function user_color {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}%n%{$reset_color%}"; else echo "%{$fg[magenta]%}%n%{$reset_color%}"; fi
 }
 
+# Info
+# http://www.nparikh.org/unix/prompt.php
+
 # Pretty much original tjkirch.zsh-theme
 # PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
 # )%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%}$(git_prompt_info) %_$(prompt_char) '
