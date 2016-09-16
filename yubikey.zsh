@@ -6,9 +6,9 @@ alias gpg=gpg2
 # Yubikey , GPG, SSH
 if [ -x /usr/bin/gpg-agent ] && [ -x /usr/lib/gnupg2/scdaemon ]; then
   #echo "gpg-agent exists"
-  if [[ ! $(ps x | grep gpg-agent | grep ssh | grep -v grep) ]]; then
+  if [ ! $(ps x | grep gpg-agent | grep ssh | grep -v grep) ]; then
     #echo "no gpg-agent exists"
-    while [[ $(ps x | grep gpg-agent | grep -v grep) ]]; do
+    while [ $(ps x | grep gpg-agent | grep -v grep) ]; do
       #echo "trying to kill the agent"
       killall gpg-agent > /dev/null 2>&1
     done
