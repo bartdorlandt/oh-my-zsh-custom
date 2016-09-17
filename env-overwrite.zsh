@@ -5,7 +5,7 @@
 # Bart is a mix of risto and tjkirch
 ZSH_THEME="bart"
 CASE_SENSITIVE="true"
-plugins=(git debian extract)
+plugins=(git debian extract ssh-agent)
 # Do not prompt me about auto updates, just do it.
 DISABLE_UPDATE_PROMPT="true"
 DISABLE_AUTO_UPDATE="true"
@@ -19,3 +19,8 @@ fi
 if [[ -f $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh ]] ; then
   source $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh
 fi
+
+# ssh-agent settings
+zstyle :omz:plugins:ssh-agent agent-forwarding off
+zstyle :omz:plugins:ssh-agent identities id_rsa
+zstyle :omz:plugins:ssh-agent lifetime 300
