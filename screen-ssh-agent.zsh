@@ -1,5 +1,4 @@
-pclist="bambam legianlaptop"
-if [[ $pclist =~ $(uname -n) ]] ; then
+if [ $SSH_AUTH_SOCK ]; then
   # set up SSH agent socket symlink
   export SSH_AUTH_SOCK_LINK="/tmp/ssh-$USER/agent"
   if ! [ -r $(readlink -m $SSH_AUTH_SOCK_LINK) ] && [ -r $SSH_AUTH_SOCK ]; then
