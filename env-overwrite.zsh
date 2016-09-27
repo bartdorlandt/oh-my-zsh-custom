@@ -4,7 +4,7 @@
 #ZSH_THEME="risto"
 # Bart is a mix of risto and tjkirch
 ZSH_THEME="bart"
-CASE_SENSITIVE="true"
+CASE_SENSITIVE="false"
 plugins=(git debian extract ssh-agent)
 # Do not prompt me about auto updates, just do it.
 DISABLE_UPDATE_PROMPT="true"
