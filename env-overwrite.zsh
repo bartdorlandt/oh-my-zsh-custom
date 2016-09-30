@@ -6,9 +6,6 @@
 ZSH_THEME="bart"
 CASE_SENSITIVE="false"
 plugins=(git debian extract ssh-agent)
-# Do not prompt me about auto updates, just do it.
-DISABLE_UPDATE_PROMPT="true"
-DISABLE_AUTO_UPDATE="true"
 
 # Load the bash aliases I already had.
 if [[ -f $HOME/.bash_aliases ]] ; then
