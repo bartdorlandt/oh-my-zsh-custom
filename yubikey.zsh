@@ -4,7 +4,7 @@ alias gpg=gpg2
 #compdef gpg2=gpg
 
 # Yubikey , GPG, SSH
-if [ -x /usr/bin/gpg-agent ] && [ -x /usr/lib/gnupg2/scdaemon ] && [ -f /etc/X11/Xsession.options ]; then
+if [ -x /usr/bin/gpg-agent ] && ( [ -x /usr/lib/gnupg2/scdaemon ] || [ -x /usr/lib/gnupg/scdaemon ] ) && [ -f /etc/X11/Xsession.options ]; then
   #echo "gpg-agent exists"
   if [ ! "$(ps x | grep gpg-agent | grep ssh | grep -v grep)" ]; then
     #echo "no gpg-agent exists"
