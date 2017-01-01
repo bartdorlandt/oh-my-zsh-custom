@@ -11,6 +11,9 @@ plugins=(git debian extract ssh-agent)
 if [[ -f $HOME/.bash_aliases ]] ; then
   source $HOME/.bash_aliases
 fi
+if [[ -f $HOME/.bash_env ]] ; then
+  source $HOME/.bash_env
+fi
 
 # loading fasd separately to get it working
 if [[ -f $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh ]] ; then
