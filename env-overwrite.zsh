@@ -8,8 +8,8 @@ CASE_SENSITIVE="false"
 plugins=(git debian extract ssh-agent)
 
 # Load the bash aliases I already had.
-if [[ -f $HOME/.bash_aliases ]] ; then
-  source $HOME/.bash_aliases
+if [[ -f $HOME/.shell_aliases ]] ; then
+  source $HOME/.shell_aliases
 fi
 if [[ -f $HOME/.bash_env ]] ; then
   source $HOME/.bash_env
