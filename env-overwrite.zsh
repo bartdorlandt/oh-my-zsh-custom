@@ -23,6 +23,15 @@ if [[ $(id -u) == 0 ]]; then
 	fi
 fi
 
+### Setting additional paths
+if [ -d $HOME/bin ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+# set PATH so it includes user's private scripts if it exists
+if [ -d $HOME/scripts ] ; then
+    PATH="$HOME/scripts:$PATH"
+fi
+
 
 # loading fasd separately to get it working
 if [[ -f $HOME/.oh-my-zsh/plugins/fasd/fasd.plugin.zsh ]] ; then
