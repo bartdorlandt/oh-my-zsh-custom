@@ -1,27 +1,71 @@
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}⚡"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+# Reference for colors: http://stackoverflow.com/questions/689765/how-can-i-change-the-color-of-my-prompt-in-zsh-different-from-normal-text
+
+autoload -U colors && colors
+
+setopt PROMPT_SUBST
 
 function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 function user_color {
-	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}%n%{$reset_color%}"; else echo "%{$fg[magenta]%}%n%{$reset_color%}"; fi
+	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}"; else echo "%{$fg[magenta]%}"; fi
 }
 
-# Info
-# http://www.nparikh.org/unix/prompt.php
+set_prompt() {
 
-# Pretty much original tjkirch.zsh-theme
-# PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
-# )%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%}$(git_prompt_info) %_$(prompt_char) '
+	# Providing the user and the machine, using a color diff between user and root
+	# PS1="%_$(user_color)%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}"
+	# Only using the system name, since user is usually the same.
+	PS1="%_$(user_color)%m%{$reset_color%} "
 
-# including the reset color parts.
-#PROMPT='%_$(user_color)@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%}$(git_prompt_info) %_$(prompt_char) '
-#RPROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%})'
+	# Path: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
+	PS1+="%{$fg_bold[blue]%}%2~%{$reset_color%}"
 
-# removed the reset color parts. Removed the return code since I don't use them anyway. 
-PROMPT='%_$(user_color)@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%}$(git_prompt_info) %_$(prompt_char) '
-#RPROMPT='%(?,,%{$fg[red]%}FAIL: $?%{$reset_color%})'
+	# Status Code
+	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
 
+	# Git
+	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
+		PS1+=', '
+		PS1+="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
+		if [ $(git status --short | wc -l) -gt 0 ]; then 
+			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
+		fi
+	fi
+
+
+	# # Timer: http://stackoverflow.com/questions/2704635/is-there-a-way-to-find-the-running-time-of-the-last-executed-command-in-the-shel
+	# if [[ $_elapsed[-1] -ne 0 ]]; then
+	# 	PS1+=', '
+	# 	PS1+="%{$fg[magenta]%}$_elapsed[-1]s%{$reset_color%}"
+	# fi
+
+	# PID
+	if [[ $! -ne 0 ]]; then
+		PS1+=', '
+		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
+	fi
+
+	# # Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
+	# CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+	# if [ ${CAN_I_RUN_SUDO} -gt 0 ]
+	# then
+	# 	PS1+=', '
+	# 	PS1+="%{$fg[red]%}sudo%{$reset_color%}"
+	# fi
+
+	# PS1+="%{$fg[white]%}]: %{$reset_color%}% "
+	PS1+=" %_$(prompt_char) "
+}
+
+precmd_functions+=set_prompt
+
+preexec () {
+   (( ${#_elapsed[@]} > 1000 )) && _elapsed=(${_elapsed[@]: -1000})
+   _start=$SECONDS
+}
+
+precmd () {
+   (( _start >= 0 )) && _elapsed+=($(( SECONDS-_start )))
+   _start=-1 
+}
