@@ -33,6 +33,21 @@ set_prompt() {
 		fi
 	fi
 
+	# virtualenv
+	if [[ -n "$(whence virtualenv_prompt_info)" ]]; then
+		if [[ "$(virtualenv_prompt_info)" ]]; then
+			PS1+=", "
+			PS1+="%{$fg[yellow]%}venv:‹%{$fg[cyan]%}$(basename $VIRTUAL_ENV)%{$fg[yellow]%}›%{$reset_color%}"
+		fi
+	fi
+
+	# Pyenv prompt
+	if [[ -n "$(whence pyenv_prompt_info)" ]]; then
+		if [[ "$(pyenv_prompt_info)" ]]; then
+			PS1+=", "
+			PS1+="%{$fg[yellow]%}py:‹%{$fg[cyan]%}$(pyenv_prompt_info)%{$fg[yellow]%}›%{$reset_color%}"
+		fi
+	fi
 
 	# Timer: http://stackoverflow.com/questions/2704635/is-there-a-way-to-find-the-running-time-of-the-last-executed-command-in-the-shel
 	if [[ $_elapsed[-1] -ne 0 ]]; then
