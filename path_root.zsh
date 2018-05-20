@@ -1,7 +1,7 @@
 # setting the path for root users
 
 if [ $UID -eq 0 ]; then
-	PATH="${PATH}:/sbin:/bin:/usr/sbin:/usr/bin"
+	PATH="/usr/local/bin:/usr/bin:/sbin:/bin:/usr/sbin"
 
 	# set PATH so it includes user's private bin if it exists
 	if [ -d $HOME/bin ] ; then 
