@@ -33,11 +33,11 @@ if [[ -d $HOME/scripts ]] ; then
 fi
 
 # set PATH so it includes snap
-if [[ -d /snap/bin ]] ; then
-	if [[ $(/bin/echo $PATH | /bin/grep "/snap/bin" | wc -l) != '1' ]]; then
-		PATH="$PATH:/snap/bin"
-	fi
-fi
+# if [[ -d /snap/bin ]] ; then
+# 	if [[ $(/bin/echo $PATH | /bin/grep "/snap/bin" | wc -l) != '1' ]]; then
+# 		# PATH="$PATH:/snap/bin"
+# 	fi
+# fi
 
 # ssh-agent settings
 # zstyle :omz:plugins:ssh-agent agent-forwarding off
