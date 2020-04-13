@@ -18,15 +18,22 @@ if [[ $(id -u) == 0 ]]; then
 fi
 
 ### Setting additional paths
-if [ -d $HOME/bin ] ; then
+if [[ -d $HOME/bin ]] ; then
     PATH="$HOME/bin:$PATH"
 fi
-if [ -d $HOME/.local/bin ] ; then
+if [[ -d $HOME/.local/bin ]] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 # set PATH so it includes user's private scripts if it exists
-if [ -d $HOME/scripts ] ; then
+if [[ -d $HOME/scripts ]] ; then
     PATH="$HOME/scripts:$PATH"
+fi
+
+# set PATH so it includes snap
+if [[ -d /snap/bin ]] ; then
+	if [[ $(/bin/echo $PATH | /bin/grep "/snap/bin" | wc -l) != '1' ]]; then
+		PATH="$PATH:/snap/bin"
+	fi
 fi
 
 # ssh-agent settings
