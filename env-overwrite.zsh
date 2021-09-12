@@ -32,6 +32,10 @@ if [[ -d $HOME/scripts ]] ; then
     PATH="$HOME/scripts:$PATH"
 fi
 
+if [[ -f $HOME/git/virtualenv-autodetect/virtualenv-autodetect.sh ]]; then
+	source $HOME/git/virtualenv-autodetect/virtualenv-autodetect.sh
+fi
+
 # set PATH so it includes snap
 # if [[ -d /snap/bin ]] ; then
 # 	if [[ $(/bin/echo $PATH | /bin/grep "/snap/bin" | wc -l) != '1' ]]; then
