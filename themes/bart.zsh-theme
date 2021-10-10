@@ -27,7 +27,7 @@ function SERVER_PROMPT() {
     # true: #
     # false: $
 
-PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%})%m%{$reset_color%} %{$fg_bold[blue]%}%2~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}$(SERVER_PROMPT)
+PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%})%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}$(SERVER_PROMPT)
 %B%(!.#.$)%b '
 RPS1="${return_code}"
 
