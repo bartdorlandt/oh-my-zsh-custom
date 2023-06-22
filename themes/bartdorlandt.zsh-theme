@@ -16,19 +16,12 @@ function SERVER_PROMPT() {
     [[ -n $SERVER ]] && echo "%{$fg_bold[magenta]%}($SERVER)%{$reset_color%} "
 }
 
-# conditional prompts
-# https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Conditional-Substrings-in-Prompts
-# %(!.%{$fg_bold[red]%}.%{$fg_bold[green]%})
-# if shell with elevated rights:
-    # true: red color
-    # false: green color
-# %(!.#.$)
-# if shell with elevated rights:
-    # true: #
-    # false: $
+function DATE() {
+	date +%H:%M:%S
+}
 
-PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%})%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}$(SERVER_PROMPT)
-%B%(!.#.$)%b '
+PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%})%m%{$reset_color%} %{$fg_bold[blue]%}%~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}$ $(SERVER_PROMPT)
+at $(DATE) %B%(!.#.$)%b '
 RPS1="${return_code}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
